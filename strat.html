@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <meta charset="UTF-8"> 
+    <!-- <form method="get" action="index"> -->
+        <!-- <meta http-equiv="refresh" content="6; url=http://192.168.3.9:8080/index?"> 
+        please wait....
+    </meat> -->
+    <!-- <input type="submit">start -->
+    
+    <!-- </form> -->
+    
+    
+    
+</head>
+<body>
+    <!-- <script>
+    setTimeout("javascript:location.href='http://192.168.3.9:8080/index?'", 5000);
+    </script> -->
+    <h1>please wait.....</h1>
+    <div id="div1" style="font-size:24px;">
+    </div>
+    <div id="div2" style="font-size:24px;">
+        </div>
+    <script type="text/javascript"> 
+        onload=function(){ 
+        setInterval(go, 1000); 
+        }; 
+        var x=4; //利用了全局變數來執行 
+        function go(){ 
+        x--; 
+        if(x>0){ 
+        document.getElementById("div1").innerHTML=x; //每次設置的x的值都不一樣了 
+        document.getElementById("div2").innerHTML="don't touch any button";
+        }else{ 
+        location.href='http://192.168.3.9:8080/index?'; 
+        } 
+        } 
+        </script> 
+       
+
+
+</body>
+
+
+
+</html>
