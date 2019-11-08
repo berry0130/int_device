@@ -42,11 +42,10 @@ class HelloWorld(object):
 
     @cherrypy.expose
     def goalA_to(self):
-        # rospy.init_node('berry_goal', anonymous=True)
         pub = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10)          
         goal = PoseStamped()
         goal.header.frame_id = "map"
-        # goal.header.stamp = rospy.Time.now()
+        goal.header.stamp = rospy.Time.now()
         goal.pose.position.x = 3
         goal.pose.position.y = 0
         goal.pose.position.z = 0

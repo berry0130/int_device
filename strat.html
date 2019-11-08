@@ -26,14 +26,14 @@
         onload=function(){ 
         setInterval(go, 1000); 
         }; 
-        var x=4; //利用了全局變數來執行 
+        var x=8; //利用了全局變數來執行 
         function go(){ 
         x--; 
         if(x>0){ 
         document.getElementById("div1").innerHTML=x; //每次設置的x的值都不一樣了 
         document.getElementById("div2").innerHTML="don't touch any button";
         }else{ 
-        location.href='http://192.168.3.9:8080/index?'; 
+        location.href='http://192.168.3.3:8080/index?'; 
         } 
         } 
         </script> 
