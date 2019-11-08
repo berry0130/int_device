@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from PIL import Image
 import cherrypy
 import rospy
 from geometry_msgs.msg import PoseStamped
@@ -30,7 +31,9 @@ class HelloWorld(object):
         # t.daemon = True
         # t.start()
         self.laucher.roslauncher()
-    
+        f = open("strat.html", "r")
+        return f
+
     @cherrypy.expose
     def kill(self):
         self.laucher.kill_roslaunch()
