@@ -7,7 +7,7 @@ from launcher import Launcher
 import threading
 config = {
     'global' : {
-        'server.socket_host' : '192.168.3.3',
+        'server.socket_host' : '192.168.4.2',
         'server.socket_port' : 8080
     }
 }

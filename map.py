@@ -19,7 +19,7 @@ class mapdrawing:
             try:
                 (position, quaternion) = self.listener.lookupTransform("/map", "/base_link", rospy.Time(0))
                 print position[0], position[1]
-                return position[0]*20,position[1]*20
+                return position[0]*100,position[1]*100
             except:
                 print 'tf not ready'
             r.sleep()
@@ -36,11 +36,14 @@ class mapdrawing:
         # self.pos_y = data.pose.pose.position.y
 
     def draw(self,x,y):
-        im = Image.open("1107.pgm")    
+        im = Image.open("1112.pgm")    
         width , height = im.size
-        plt.imshow(im)
-        plt.scatter(x,y, c = 'y',marker = 'o')
-        plt.savefig('1112.png')
+
+        plt.imshow(im,cmap ='gray',origin='lower')
+        plt.scatter(x+86,(-y+86), c = 'y',marker = 'o')
+        plt.imshow(im,cmap ='gray')
+       
+        plt.savefig('result.png')
         print "haha"
         # plt.show()
         # im = Image.open("1107.pgm")    
@@ -55,6 +58,8 @@ class mapdrawing:
 if __name__ == '__main__':
     rospy.init_node('map', anonymous=True)
     do=mapdrawing()
-    x,y=do.position()
-    do.draw(x,y)
+    # x,y=do.position()
+
+    print x,y
+    do.draw(0.5,-0.5)
  
