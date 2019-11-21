@@ -36,7 +36,7 @@ class mapdrawing:
         # self.pos_y = data.pose.pose.position.y
 
     def draw(self,x,y):
-        im = Image.open("1112.pgm")    
+        im = Image.open("base.pgm")    
         width , height = im.size
 
         plt.imshow(im,cmap ='gray',origin='lower')
@@ -58,8 +58,8 @@ class mapdrawing:
 if __name__ == '__main__':
     rospy.init_node('map', anonymous=True)
     do=mapdrawing()
-    # x,y=do.position()
+    x,y=do.position()
 
     print x,y
-    do.draw(0.5,-0.5)
+    do.draw(4,4)
  

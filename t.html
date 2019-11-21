@@ -6,6 +6,7 @@
     <div>
         <h1>Hello!&nbsp;We&nbsp;are&nbsp;Virtuoso&nbsp;Robotics!&nbsp;It's&nbsp;PN60!&nbsp;</h1>
     </div>
+
     <form method="get" action="start">
         <button type="submit">start</button>
     </form>
@@ -19,8 +20,47 @@
     <form method="get" action="goalA_leave">
         <button type="submit">goalA_leave</button>
     </form>
-
-   
+    
 </body>
+<!-- <body>
+
+    <img src="http://192.168.4.10:8080/result.png" />
+   
+
+
+
+</body> -->
+    <script>
+    function refresh(node)
+{
+   var times = 3000; // gap in Milli Seconds;
+
+   (function startRefresh()
+   {
+      var address;
+      if(node.src.indexOf('?')>-1)
+       address = node.src.split('?')[0];
+      else 
+       address = node.src;
+      node.src = address+"?time="+new Date().getTime();
+
+      setTimeout(startRefresh,times);
+   })();
+
+}
+
+window.onload = function()
+{
+  var node = document.getElementById('Honeycrisp-Apple.jpg');
+  refresh(node);
+  // you can refresh as many images you want just repeat above steps
+}
+
+</script> 
+<body onload="refresh();">
+    <img src="http://192.168.4.10:8080/result.png" />
+    </body>
+
+
 
 </html>

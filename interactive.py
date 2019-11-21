@@ -7,7 +7,7 @@ from launcher import Launcher
 import threading
 config = {
     'global' : {
-        'server.socket_host' : '192.168.4.2',
+        'server.socket_host' : '192.168.4.10',
         'server.socket_port' : 8080
     }
 }
@@ -80,7 +80,7 @@ class HelloWorld(object):
 #     laucher = Launcher()
 #     laucher.roslauncher()
 def startCherry():
-    cherrypy.quickstart(HelloWorld(), '/',config)
+    cherrypy.quickstart(HelloWorld(), '/',"app.conf")
 if __name__ == '__main__':
     # laucher = Launcher()
     # laucher.launch_roscore()
