@@ -15,6 +15,7 @@ class HelloWorld(object):
 
     def __init__(self):
         self.laucher = Launcher()
+        self.pub = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10) 
 
     @cherrypy.expose
     def index(self):
@@ -22,7 +23,7 @@ class HelloWorld(object):
         # <input type="button" value="goalA" onclick="location.href='192.168.3.3:8080/goalA_to'">
         # ERIC https://github.com/VirtuosoEric/robot_web_service/blob/pn60/home.html
         
-        f = open("t.html", "r")
+        f = open("home.html", "r")
         return f
 
     @cherrypy.expose
@@ -42,19 +43,18 @@ class HelloWorld(object):
 
     @cherrypy.expose
     def goalA_to(self):
-        pub = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10)          
         goal = PoseStamped()
         goal.header.frame_id = "map"
         goal.header.stamp = rospy.Time.now()
-        goal.pose.position.x = 3
-        goal.pose.position.y = 0
+        goal.pose.position.x = 0.240
+        goal.pose.position.y = -0.344
         goal.pose.position.z = 0
         goal.pose.orientation.w = 1.0
-        pub.publish(goal)
+        self.pub.publish(goal)
         return 'goal to!'
     @cherrypy.expose
     def goalA_leave(self):
-        pub = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10)          
+        # pub = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10)          
         goal = PoseStamped()
         goal.header.frame_id = "map"
         goal.header.stamp = rospy.Time.now()
@@ -62,15 +62,32 @@ class HelloWorld(object):
         goal.pose.position.y = 0
         goal.pose.position.z = 0
         goal.pose.orientation.w = 1.0
-        pub.publish(goal)
+        self.pub.publish(goal)
         return 'goal leave!'
     @cherrypy.expose
     def goalB_to(self):
-        # f = open("latop.html", "r")
-        return 'Hello!'
+        # pub = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10)          
+        goal = PoseStamped()
+        goal.header.frame_id = "map"
+        goal.header.stamp = rospy.Time.now()
+        goal.pose.position.x = 0.601
+        goal.pose.position.y = -0.138
+        goal.pose.position.z = 0
+        goal.pose.orientation.w = 1.0
+        self.pub.publish(goal)
+        return 'goal to!'
+        # return 'Hello!'
     @cherrypy.expose
     def goalB_leave(self):
-        # f = open("latop.html", "r")
+        # pub = rospy.Publisher('move_base_simple/goal', PoseStamped, queue_size=10)          
+        goal = PoseStamped()
+        goal.header.frame_id = "map"
+        goal.header.stamp = rospy.Time.now()
+        goal.pose.position.x = 0
+        goal.pose.position.y = 0
+        goal.pose.position.z = 0
+        goal.pose.orientation.w = 1.0
+        self.pub.publish(goal)
         return 'Hello!'
     @cherrypy.expose
     def goalC_to(self):

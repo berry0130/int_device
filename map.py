@@ -13,13 +13,13 @@ class mapdrawing:
         self.listener = tf.TransformListener()
         # rospy.Subscriber('/', PoseWithCovarianceStamped, self.position)
     def position(self):
-        print "a"
+        # print "a"
         r = rospy.Rate(10)
         while not rospy.is_shutdown():
             try:
                 (position, quaternion) = self.listener.lookupTransform("/map", "/base_link", rospy.Time(0))
-                print position[0], position[1]
-                return position[0]*100,position[1]*100
+                # print position[0], position[1]
+                return position[0],position[1]
             except:
                 print 'tf not ready'
             r.sleep()
@@ -36,14 +36,15 @@ class mapdrawing:
         # self.pos_y = data.pose.pose.position.y
 
     def draw(self,x,y):
-        im = Image.open("base.pgm")    
+        im = Image.open("1121.pgm")    
         width , height = im.size
 
-        plt.imshow(im,cmap ='gray',origin='lower')
-        plt.scatter(x+86,(-y+86), c = 'y',marker = 'o')
+        # plt.imshow(im,cmap ='gray',origin='lower')
         plt.imshow(im,cmap ='gray')
-       
-        plt.savefig('result.png')
+        print x,y
+        plt.scatter(100*x+86,(-100*y+86), c = 'y',marker = 'o')
+        plt.imshow(im,cmap ='gray')
+        plt.savefig("./static/4.jpg")
         print "haha"
         # plt.show()
         # im = Image.open("1107.pgm")    
@@ -57,9 +58,11 @@ class mapdrawing:
             
 if __name__ == '__main__':
     rospy.init_node('map', anonymous=True)
-    do=mapdrawing()
-    x,y=do.position()
-
-    print x,y
-    do.draw(4,4)
- 
+    while not rospy.is_shutdown():
+        try:
+            do=mapdrawing()
+            x,y=do.position()
+            do.draw(146,100)
+        except:
+            print 'draw fail'
+        
