@@ -39,10 +39,10 @@ class mapdrawing:
         im = Image.open("1121.pgm")    
         width , height = im.size
 
-        # plt.imshow(im,cmap ='gray',origin='lower')
-        plt.imshow(im,cmap ='gray')
+        plt.imshow(im,cmap ='gray',origin='lower')
         print x,y
         plt.scatter(100*x+86,(-100*y+86), c = 'y',marker = 'o')
+        plt.scatter(x,y, c = 'y',marker = 'o')
         plt.imshow(im,cmap ='gray')
         plt.savefig("./static/4.jpg")
         print "haha"
@@ -62,7 +62,7 @@ if __name__ == '__main__':
         try:
             do=mapdrawing()
             x,y=do.position()
-            do.draw(146,100)
+            do.draw(x,y)
         except:
             print 'draw fail'
         
