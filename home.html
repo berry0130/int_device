@@ -109,13 +109,16 @@
     </form> -->
 </div>
 <div id="Body" >
+        <form method="get" action="goalA_leave">
+        
         <img src="http://192.168.4.10:8080/show.jpg" id="newImage" />   
 </div>
 <script>
         setInterval(function() {
             var myImageElement = document.getElementById('newImage');
             myImageElement.src = "http://192.168.4.10:8080/show.jpg?" + new Date().getTime();
-        }, 500);
+            
+        }, 1000);
         </script>
     
    

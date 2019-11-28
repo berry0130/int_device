@@ -11,17 +11,23 @@ class mapdrawing:
     def __init__(self):
         # self.tf = TransformListener()
         self.listener = tf.TransformListener()
+        print "init"
         # rospy.Subscriber('/', PoseWithCovarianceStamped, self.position)
     def position(self):
         # print "a"
-        r = rospy.Rate(50)
+        r = rospy.Rate(10)
+        # self.listener.waitForTransform("/map", now,"/base_link", past, "/world",)
         while not rospy.is_shutdown():
             try:
-                (position, quaternion) = self.listener.lookupTransform("/map", "/base_link", rospy.Time(0))
+                # now = rospy.Time().now
+                
+                # past = now-rospy.Duration(1.0)
+                # self.listener.waitForTransform("/map", "/base_link", rospy.Time(0))
+                position, quaternion= self.listener.lookupTransform("/map", "/base_link", rospy.Time(0))
                 # print position[0], position[1]
                 return position[0],position[1]
-            except:
-                print 'tf not ready'
+            except :
+                print "fail_tf"
             r.sleep()
 
         # if (self.listener.frameExists("/base_link") and self.listener.frameExists("/map")):
@@ -59,11 +65,19 @@ class mapdrawing:
             
 if __name__ == '__main__':
     rospy.init_node('map', anonymous=True)
+    # while not rospy.is_shutdown():
+    #     try:
+    #         do=mapdrawing()
+    #         print "do"
+    #         x,y=do.position()
+    #         print "draw"
+    #         do.draw(x,y)
+    #     except:
+    #         print 'draw fail'
     while not rospy.is_shutdown():
-        try:
-            do=mapdrawing()
-            x,y=do.position()
-            do.draw(x,y)
-        except:
-            print 'draw fail'
+        do=mapdrawing()
+        print "do"
+        x,y=do.position()
+        print "draw"
+        do.draw(x,y)
         
