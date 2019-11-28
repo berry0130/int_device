@@ -14,7 +14,7 @@ class mapdrawing:
         # rospy.Subscriber('/', PoseWithCovarianceStamped, self.position)
     def position(self):
         # print "a"
-        r = rospy.Rate(10)
+        r = rospy.Rate(50)
         while not rospy.is_shutdown():
             try:
                 (position, quaternion) = self.listener.lookupTransform("/map", "/base_link", rospy.Time(0))
@@ -44,7 +44,8 @@ class mapdrawing:
         plt.scatter(100*x+86,(-100*y+86), c = 'y',marker = 'o')
         # plt.scatter(x,y, c = 'y',marker = 'o')
         plt.imshow(im,cmap ='gray')
-        plt.savefig("./static/4.jpg")
+        plt.savefig("./static/show.jpg")
+        plt.clf()
         print "haha"
         # plt.show()
         # im = Image.open("1107.pgm")    

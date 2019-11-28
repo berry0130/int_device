@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head> 
+        <!-- <script langauge="javascript">
+                var counter = 0;
+                window.setInterval("refreshDiv()", 1000);
+                function refreshDiv(){
+                    // counter = counter + 1;
+                    // // var myImageElement = document.createElement('myImage');
+                    // // myImageElement.src = "http://192.168.4.10:8080/show.jpg"
+                   
+                    // document.getElementById("Body").innerHTML = ' <img src="http://192.168.4.10:8080/show.jpg" id="myImage" /> ' + counter;
+                    var par = document.getElementById('Body');
+                    var img = document.createElement('img');
+                    img.src = "http://192.168.4.10:8080/show.jpg?" + new Date().getTime();
+                    
+
+                }
+                // window.location.reload(1);
+            </script>        -->
+            <!-- <script>
+            var newImage = new Image();
+            newImage.src = "http://192.168.4.10:8080/show.jpg";
+
+            function updateImage()
+            {
+            if(newImage.complete) {
+                document.getElementById("Body").src = newImage.src;
+                newImage = new Image();
+                number++;
+                newImage.src = "http://192.168.4.10:8080/show.jpg?" + new Date().getTime();
+            }
+
+                setTimeout(updateImage, 1000);
+            }
+            </script> -->
 <style type="text/css">
 #Header{
     width:auto;
@@ -76,14 +109,17 @@
     </form> -->
 </div>
 <div id="Body" >
-    <img src="http://192.168.4.10:8080/4.jpg" id="myImage" />
-    <script>
-    setInterval(function() {
-        var myImageElement = document.getElementById('myImage');
-        myImageElement.src = "http://192.168.4.10:8080/4.jpg"
-    }, 5000);
-    </script>
+        <img src="http://192.168.4.10:8080/show.jpg" id="newImage" />   
 </div>
+<script>
+        setInterval(function() {
+            var myImageElement = document.getElementById('newImage');
+            myImageElement.src = "http://192.168.4.10:8080/show.jpg?" + new Date().getTime();
+        }, 500);
+        </script>
+    
+   
+</script> -->
 <div style='clear:both;'></div>
 <div id="Footer">Footer 欄位</div>
 </body>
